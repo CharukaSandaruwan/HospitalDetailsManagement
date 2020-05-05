@@ -17,7 +17,7 @@ public class Hospital {
 
 		
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital_management_system?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
 		} catch (Exception e) {
@@ -62,10 +62,10 @@ public class Hospital {
 			
 			String newHospital = readHospitalDetails();
 			output = "{\"status\":\"success\", \"data\": \"" +newHospital + "\"}";
-			//output = "Inserted successfully.";
+			output = "Inserted successfully.";
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
-			//output = "Error while inserting the hospital Details";
+			output = "Error while inserting the hospital Details";
 			System.err.println(e.getMessage());
 		}
 
@@ -86,7 +86,14 @@ public class Hospital {
 			}
 
 			// Prepare the html table to be displayed
-			output = "<table border=\"1\"><tr><th>hospital_id</th><th>hospital_name</th><th>hospital_location</th><th>hospital_availableRooms</th><th>hospital_labs</th><th>Update</th><th>Remove</th></tr>";
+			output = "<table border='1'>"
+					+ "<tr><th>hospital_id</th>"
+					+ "<th>hospital_name</th>"
+					+ "<th>hospital_location</th>"
+					+ "<th>hospital_availableRooms</th>"
+					+ "<th>hospital_labs</th>"
+					+ "<th>Update</th>"
+					+ "<th>Remove</th></tr>";
 
 			String query = "select * from m_hospital";
 			Statement stmt = con.createStatement();
@@ -101,14 +108,22 @@ public class Hospital {
 				String hospital_availableRooms = Integer.toString(rs.getInt("m_hospital_availableRooms"));
 				String hospital_labs= rs.getString("m_hospital_labs");
 
+			/*	// Add into the html table
+				output += "<tr><td><input id='hidHospitalIDUpdate' name='hidHospitalIDUpdate' type='hidden' value='" + hospital_id +"'>" + hospital_name +  "</td>";
+			
+				//output += "<td>" + hospital_id + "</td>";
+				//output += "<td>" + hospital_name + "</td>";
+				output += "<td>" + hospital_location + "</td>";
+				output += "<td>" + hospital_availableRooms + "</td>";
+				output += "<td>" + hospital_labs + "</td>";
+			 */
 				// Add into the html table
-				//output += "<tr><td><input id='hidHospitalIDUpdate'name='hidHospitalIDUpdate' type='hidden' value='" + hospital_id + "</td>";
-				output += "<td>" + hospital_id + "</td>";
+				output += "<tr><td><input id='hidHospitalIDUpdate'name='hidHospitalIDUpdate' type='hidden' value='" + hospital_id+ "'>"+ hospital_id + "</td>";
 				output += "<td>" + hospital_name + "</td>";
 				output += "<td>" + hospital_location + "</td>";
 				output += "<td>" + hospital_availableRooms + "</td>";
 				output += "<td>" + hospital_labs + "</td>";
-
+				
 				// buttons
 			/*	output += "<td><input name='btnUpdate' type='button'
 						 value='Update'
@@ -124,10 +139,10 @@ public class Hospital {
 						+ "<td><input name='btnRemove'type='button' "
 						+ "value='Remove'class='btnRemove btn btn-danger'data-itemid='"+ hospital_id + "'>" + "</td></tr>";
 */
-				output += "<td><input name='btnUpdate' type='button'value='Update'class='btnUpdate btn btn-secondary'></td>"
-						 +"<td><input name='btnRemove' type='button'value='Remove'class='btnRemove btn btn-danger' data-itemid='"
-						 + hospital_id + "'>" + "</td></tr>"; 
-			
+				output += "<td><input name='btnUpdate'type='button' "
+						+ "value='Update'class='btnUpdate btn btn-secondary'></td>"
+						+ "<td><input name='btnRemove'type='button' "
+						+ "value='Remove'class='btnRemove btn btn-danger'data-itemid='"+ hospital_id + "'>" + "</td></tr>";
 			}
 
 			con.close();

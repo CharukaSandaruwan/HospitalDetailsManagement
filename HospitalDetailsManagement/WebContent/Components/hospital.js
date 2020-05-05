@@ -1,8 +1,6 @@
 $(document).ready(function()
 {
-	if ($("#alertSuccess").text().trim() == ""){
 	$("#alertSuccess").hide();
-	}
 	$("#alertError").hide();
 });
 
@@ -36,7 +34,7 @@ $(document).on("click", "#btnSave", function(event)
 		dataType : "text",
 		complete : function(response, status)
 		{
-			onItemSaveComplete(response.responseText, status);
+			onHospitalSaveComplete(response.responseText, status);
 		}
 	});
 });
@@ -93,7 +91,7 @@ $(document).on("click", ".btnRemove", function(event)
 	{
 		url : "HospitalAPI",
 		type : "DELETE",
-		data : "hospital_id=" + $(this).data("hospital_id"),
+		data : "hospital_id=" + $(this).data("itemid"),
 		dataType : "text",
 		complete : function(response, status)
 		{
@@ -162,11 +160,11 @@ function validateHospitalForm()
 	
 	if (!$.isNumeric(tmpPrice))
 	{
-		return "Insert a numerical value for Item Price.";
+		return "Insert a numerical value for number of rooms .";
 	}
 	
 	// convert to decimal price
-	$("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
+	//$("#tmpPrice").val(parseFloat(tmpPrice).toFixed(2));
 	
 	// DESCRIPTION------------------------
 	if ($("#hospital_labs").val().trim() == "")
