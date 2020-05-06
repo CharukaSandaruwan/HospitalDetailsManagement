@@ -12,7 +12,7 @@
 <script src="Components/hospital.js"></script>
 
 </head>
-<body>
+<body Style="background-image:url(potos/home_danceschool_pic44.jpg)">
 <div class="container">
 	<div class="row" >
 		<div class="col-6">
