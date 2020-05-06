@@ -1,4 +1,4 @@
-package com.model;
+package com;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -61,11 +61,11 @@ public class Hospital {
 			con.close();
 			
 			String newHospital = readHospitalDetails();
-			output = "{\"status\":\"success\", \"data\": \"" +newHospital + "\"}";
-			output = "Inserted successfully.";
+			output = "{\"status\":\"success\", \"data\": \"" + newHospital + "\"}";
+			
 		} catch (Exception e) {
 			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
-			output = "Error while inserting the hospital Details";
+			
 			System.err.println(e.getMessage());
 		}
 

@@ -1,4 +1,4 @@
-<%@page import="com.model.*"%>
+<%@page import="com.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
@@ -40,8 +40,10 @@
 				<input id="hospital_labs" name="hospital_labs" type="text" class="form-control form-control-sm">
 				<br>
 				
-				<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
+				<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary" >
 				<input type="hidden" id="hidhospitalIDSave" name="hidhospitalIDSave" value="">
+			
+				
 			</form>
 			
 			<div id="alertSuccess" class="alert alert-success"></div>

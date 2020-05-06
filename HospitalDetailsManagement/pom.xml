@@ -17,7 +17,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.3</version>
         <configuration>
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
@@ -25,7 +25,24 @@
     </plugins>
   </build>
   <dependencies>
-
+  	
+		<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-bundle</artifactId>
+		<version>1.19.4</version>
+		</dependency>
+		
+		<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-core</artifactId>
+		<version>1.19.4</version>
+		</dependency>
+		
+		<dependency>
+		<groupId>com.sun.jersey</groupId>
+		<artifactId>jersey-server</artifactId>
+		<version>1.19.4</version>
+		</dependency>
 	
 	<dependency>
 		<groupId>org.glassfish.jersey.bundles</groupId>

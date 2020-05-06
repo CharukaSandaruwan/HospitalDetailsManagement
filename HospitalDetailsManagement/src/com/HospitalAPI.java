@@ -1,4 +1,4 @@
-package com.model;
+package com;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public class HospitalAPI extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class HospitalAPI extends HttpServlet {
 	//Map paras1= getparasInt(request)
 		
 		String output = hosobj.updateHospitalDetails(
-										   paras.get("hospital_id").toString(),
+										   paras.get("hidhospitalIDSave").toString(),
 										   paras.get("hospital_name").toString(),
 										   paras.get("hospital_location").toString(),
 										  Integer.parseInt(paras.get("hospital_availableRooms").toString()),
